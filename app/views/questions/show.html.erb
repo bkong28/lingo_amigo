@@ -1,3 +1,5 @@
 <% title(@question.phrase, "Questions")%>
 
 <h2><%= @question.phrase %></h2>
+
+<%= link_to "Edit Question", edit_question_path(@question) %>

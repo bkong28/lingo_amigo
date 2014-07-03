@@ -25,6 +25,21 @@ class QuestionsController < ApplicationController
 		@question = Question.find(params[:id])
 	end
 
+	def edit
+	  @question = Question.find(params[:id])
+	end
+
+	def update
+	  @question = Question.find(params[:id])
+	  if @question.update(question_params)
+	    flash[:notice] = "Question has been updated."
+	    redirect_to @question
+	  else
+	    flash[:alert] = "Question has not been updated."
+	    render "edit"
+	  end
+	end
+
 	private
 	  def question_params
 	    params.require(:question).permit(:phrase, :language)
