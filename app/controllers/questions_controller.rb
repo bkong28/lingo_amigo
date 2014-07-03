@@ -1,4 +1,8 @@
 class QuestionsController < ApplicationController
+	before_action :set_question, only: [:show,
+                                   :edit,
+                                   :update,
+                                   :destroy]
 	
 	def index
 		@questions = Question.all
@@ -22,15 +26,12 @@ class QuestionsController < ApplicationController
 	end
 
 	def show
-		@question = Question.find(params[:id])
 	end
 
 	def edit
-	  @question = Question.find(params[:id])
 	end
 
 	def update
-	  @question = Question.find(params[:id])
 	  if @question.update(question_params)
 	    flash[:notice] = "Question has been updated."
 	    redirect_to @question
@@ -41,7 +42,6 @@ class QuestionsController < ApplicationController
 	end
 
 	def destroy
-	  @question = Question.find(params[:id])
 	  @question.destroy
 	  flash[:notice] = "Question has been destroyed."
 	  redirect_to questions_path
@@ -50,7 +50,15 @@ class QuestionsController < ApplicationController
 	private
 	  def question_params
 	    params.require(:question).permit(:phrase, :language)
-	end
+		end
+
+		def set_question
+	    @question = Question.find(params[:id])
+	  rescue ActiveRecord::RecordNotFound
+	    flash[:alert] = "The question you were looking" +
+	                    " for could not be found."
+	    redirect_to questions_path
+	  end
 
 end
 
