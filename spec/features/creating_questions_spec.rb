@@ -7,8 +7,8 @@ feature 'Creating Questions' do
 
     click_link 'New Question'
 
-    fill_in 'Question', with: 'Fuck you!'
-    fill_in 'Language', with: 'Korean'
+    fill_in "How do you say", with: 'Fuck you!'
+    fill_in "in", with: 'Korean'
     click_button 'Create Question'
     
     expect(page).to have_content('Question has been created.')

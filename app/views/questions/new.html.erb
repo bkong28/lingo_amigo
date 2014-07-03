@@ -1,0 +1,11 @@
+<h2>New Question</h2>
+<%= form_for(@question) do |f| %>
+  <p>
+    <%= f.label :phrase, "How do you say" %><br />
+    <%= f.text_field :phrase %>
+	</p>
+  <p>
+    <%= f.label :language, "in" %><br />
+    <%= f.text_field :language %>
+  <%= f.submit %>
+<% end %>
