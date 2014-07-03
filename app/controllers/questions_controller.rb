@@ -9,12 +9,15 @@ class QuestionsController < ApplicationController
 
 	def create
   	@question = Question.new(question_params)
-  	  	if @question.save
+  	  
+  	if @question.save
 	    flash[:notice] = "Question has been created."
 	    redirect_to @question
   	else
-    	# nothing, yet
-		end
+    	flash[:alert] = "Question has not been created."
+    	
+    	render "new"
+    end
 	end
 
 	def show

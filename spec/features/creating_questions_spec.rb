@@ -1,12 +1,13 @@
 require 'spec_helper'
 
 feature 'Creating Questions' do
+  before do
+    visit '/'
+    
+    click_link 'New Question'
+  end
 
   scenario "can create a question" do
-    visit '/'
-
-    click_link 'New Question'
-
     fill_in "How do you say", with: 'Fuck you'
     fill_in "in", with: 'Korean'
     click_button 'Create Question'
@@ -19,6 +20,13 @@ feature 'Creating Questions' do
 		
 		title = "Fuck you - Questions - LingoAmigo"
 		expect(page).to have_title(title)
-
 	end
+
+  scenario "can not create a question without a phrase" do
+    click_button 'Create Question'
+
+    expect(page).to have_content("Question has not been created.")
+    expect(page).to have_content("Phrase can't be blank")
+  end
+
 end
