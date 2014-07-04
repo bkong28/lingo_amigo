@@ -3,13 +3,14 @@ require 'spec_helper'
 feature 'Creating Questions' do
   before do
     visit '/'
+    Language.create name:"Spanish"
     
     click_link 'New Question'
   end
 
   scenario "can create a question" do
     fill_in "How do you say", with: 'Fuck you'
-    fill_in "in", with: 'Korean'
+    select "Spanish", from: "Language"
     click_button 'Create Question'
     
     expect(page).to have_content('Question has been created.')

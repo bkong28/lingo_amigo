@@ -15,8 +15,11 @@
     <%= f.label :phrase, "How do you say" %><br />
     <%= f.text_field :phrase %>
 	</p>
-  <p>
-    <%= f.label :language, "in" %><br />
-    <%= f.text_field :language %>
+
+	<p>
+    <%= f.label :language_id %><br>
+    <%= f.select :language_id, @languages.map { |l| [l.name, l.id] } %>
+  </p> 
+
   <%= f.submit %>
 <% end %>

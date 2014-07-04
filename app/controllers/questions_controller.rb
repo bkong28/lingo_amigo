@@ -10,6 +10,8 @@ class QuestionsController < ApplicationController
 
 	def new
 		@question = Question.new
+		@languages = Language.all
+
 	end
 
 	def create
@@ -20,7 +22,8 @@ class QuestionsController < ApplicationController
 	    redirect_to @question
   	else
     	flash[:alert] = "Question has not been created."
-    	
+    	@languages = Language.all
+
     	render "new"
     end
 	end
