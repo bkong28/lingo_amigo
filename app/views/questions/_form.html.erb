@@ -18,7 +18,7 @@
 
 	<p>
     <%= f.label :language_id %><br>
-    <%= f.select :language_id, @languages.map { |l| [l.name, l.id] } %>
+    <%= f.select :language_id, @languages.map { |l| [l.name, l.id] }, {:prompt => 'select language'} %>
   </p> 
 
   <%= f.submit %>
