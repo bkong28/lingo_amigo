@@ -6,7 +6,7 @@ feature "Deleting questions" do
     
     visit "/"
     click_link "Fuck you"
-    click_link "Delete Question"
+    click_link "delete"
     
     expect(page).to have_content("Question has been destroyed.")
 

@@ -3,6 +3,7 @@ require 'spec_helper'
 feature 'Creating Questions' do
   before do
     visit '/'
+# no need for this anymore since seed data introduced
     Language.create name:"Spanish"
     
     click_link 'New Question'

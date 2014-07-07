@@ -6,6 +6,8 @@ class QuestionsController < ApplicationController
 	
 	def index
 		@questions = Question.all
+		# put language something here for index to show?	
+
 	end
 
 	def new

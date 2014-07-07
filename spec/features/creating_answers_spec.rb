@@ -1,11 +1,11 @@
 require 'spec_helper'
 feature "Creating Answers" do
   before do
-    FactoryGirl.create(:question, phrase: "Hello")
+    FactoryGirl.create(:question, phrase: "Hello") #, :language_id "1")
     
     visit '/'
     click_link "Hello"
-    click_link "New Answer"
+    click_link "answer"
   end
 
   scenario "Creating an answer" do

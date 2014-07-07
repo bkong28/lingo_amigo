@@ -2,6 +2,8 @@
 <h2>Questions</h2>
 <ul>
   <% @questions.each do |question| %>
-    <li><%= link_to question.phrase, question %></li>
+    <li><%=link_to question.phrase, question%></li>
+		<li>How do you say "<%= question.phrase %>" in <%= question.language_id%>?%></li>
+
   <% end %>
 </ul>
