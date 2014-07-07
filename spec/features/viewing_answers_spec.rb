@@ -2,13 +2,17 @@ require 'spec_helper'
 
 feature "Viewing tickets" do
   before do
+
+
     hello = FactoryGirl.create(:question,
                                     phrase: "Hello",
                                     language_id: 1)
     
-    FactoryGirl.create(:answer,
-            question: hello,
-            response: "Bonjour")
+    user = FactoryGirl.create(:user)
+    answer = FactoryGirl.create(:answer,
+                                question: hello,
+                                response: "Bonjour")
+    answer.update(user: user)
     
     goodbye = FactoryGirl.create(:question,
                                            phrase: "Goodbye",

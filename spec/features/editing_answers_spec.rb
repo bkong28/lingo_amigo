@@ -2,9 +2,15 @@ require 'spec_helper'
 
 feature "Editing answers" do
   let!(:question) { FactoryGirl.create(:question) }
-  let!(:answer) { FactoryGirl.create(:answer, question: question) }
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:answer) do
+    answer = FactoryGirl.create(:answer, question: question)
+    answer.update(user: user)
+    answer
+  end
   
   before do
+    sign_in_as!(user)
     visit '/'
     click_link question.phrase
     click_link answer.response

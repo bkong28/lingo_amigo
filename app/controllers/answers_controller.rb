@@ -1,6 +1,7 @@
 class AnswersController < ApplicationController
 	before_action :set_question
 	before_action :set_answer, only: [:show, :edit, :update, :destroy]
+	before_action :require_signin!, except: [:show, :index]
 
 	def new
 	  @answer = @question.answers.build
@@ -9,6 +10,7 @@ class AnswersController < ApplicationController
 
 	def create
 	  @answer = @question.answers.build(answer_params)
+	  @answer.user = current_user
 	  if @answer.save
 	    flash[:notice] = "Answer has been created."
 	    redirect_to [@question, @answer]
