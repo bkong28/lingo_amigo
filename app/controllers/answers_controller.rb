@@ -31,6 +31,12 @@ class AnswersController < ApplicationController
 	  end
 	end
 
+	def destroy
+	 	@answer.destroy
+	  flash[:notice] = "Answer has been deleted."
+	  redirect_to @question
+	end
+
 private
   def answer_params
     params.require(:answer).permit(:response)
