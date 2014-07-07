@@ -16,7 +16,20 @@ class AnswersController < ApplicationController
 	    flash[:alert] = "Answer has not been created."
 	    render "new"
 	  end
-	end 
+	end
+
+	def edit
+	end
+
+	def update
+	  if @answer.update(answer_params)
+	    flash[:notice] = "Answer has been updated."
+	    redirect_to [@question, @answer]
+	  else
+	    flash[:alert] = "Answer has not been updated."
+	    render action: "edit"
+	  end
+	end
 
 private
   def answer_params
