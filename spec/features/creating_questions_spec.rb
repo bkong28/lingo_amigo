@@ -4,7 +4,6 @@ feature 'Creating Questions' do
   before do
     sign_in_as!(FactoryGirl.create(:admin_user))
     visit '/'
-# no need for this anymore since seed data introduced
     Language.create name:"Spanish"
     
     click_link 'New Question'
@@ -23,6 +22,7 @@ feature 'Creating Questions' do
 		
 		title = "Fuck you - Questions - LingoAmigo"
 		expect(page).to have_title(title)
+    expect(page).to have_content("How do you say \"Fuck you\" in Spanish?")
 	end
 
   scenario "can not create a question without a phrase" do

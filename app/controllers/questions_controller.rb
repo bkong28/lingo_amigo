@@ -1,8 +1,7 @@
 class QuestionsController < ApplicationController
-	before_action :set_question, only: [:show,
-                                   :edit,
-                                   :update,
-                                   :destroy]
+	
+	before_action :authorize_admin!, except: [:index, :show]
+	before_action :set_question, only: [:show, :edit, :update, :destroy]
 	
 	def index
 		@questions = Question.all
@@ -12,8 +11,7 @@ class QuestionsController < ApplicationController
 
 	def new
 		@question = Question.new
-		@languages = Language.all
-
+		collect_languages
 	end
 
 	def create
@@ -24,7 +22,7 @@ class QuestionsController < ApplicationController
 	    redirect_to @question
   	else
     	flash[:alert] = "Question has not been created."
-    	@languages = Language.all
+    	collect_languages
 
     	render "new"
     end
@@ -34,6 +32,7 @@ class QuestionsController < ApplicationController
 	end
 
 	def edit
+   	collect_languages
 	end
 
 	def update
@@ -42,7 +41,8 @@ class QuestionsController < ApplicationController
 	    redirect_to @question
 	  else
 	    flash[:alert] = "Question has not been updated."
-	    render "edit"
+			collect_languages
+			render "edit"
 	  end
 	end
 
@@ -54,7 +54,7 @@ class QuestionsController < ApplicationController
 
 	private
 	  def question_params
-	    params.require(:question).permit(:phrase, :language)
+	    params.require(:question).permit(:phrase, :language_id)
 		end
 
 		def set_question
@@ -65,5 +65,18 @@ class QuestionsController < ApplicationController
 	    redirect_to questions_path
 	  end
 
+	  def collect_languages
+	  	@languages = Language.all
+	  end
+
+
+  def authorize_admin!
+    require_signin!
+    
+    unless current_user.admin?
+      flash[:alert] = "You must be an admin to do that."
+      redirect_to root_path
+		end
+	end
 end
 

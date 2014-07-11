@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 feature "Deleting questions" do
+	before do
+    sign_in_as!(FactoryGirl.create(:admin_user))
+  end
+  
   scenario "Deleting a question" do
     FactoryGirl.create(:question, phrase: "Fuck you")
     

@@ -1,5 +1,5 @@
 <div id='answer'>
-	<h2><%= @answer.response %></h2>
+	<h2>How do you say "<%= @answer.question.phrase %>" in <%=@answer.question.language.name %>?</h2>
 	<span id='author'>Answered by <%= @answer.user.email %></span>
 	<%= link_to "Edit Answer", [:edit, @question, @answer] %>
 	<%= link_to "Delete Answer", [@question, @answer], method: :delete,

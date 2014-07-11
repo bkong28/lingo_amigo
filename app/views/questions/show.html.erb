@@ -1,6 +1,6 @@
 <% title(@question.phrase, "Questions")%>
 
-<h2>How do you say "<%= @question.phrase %>" in [language]?</h2>
+<h2>How do you say "<%= @question.phrase %>" in <%= @question.language.name %>?</h2>
 
 <%= link_to "edit", edit_question_path(@question) %>
 
