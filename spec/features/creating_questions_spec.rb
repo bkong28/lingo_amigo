@@ -26,10 +26,19 @@ feature 'Creating Questions' do
 	end
 
   scenario "can not create a question without a phrase" do
+    select "Spanish", from: "Language"
     click_button 'Create Question'
 
     expect(page).to have_content("Question has not been created.")
     expect(page).to have_content("Phrase can't be blank")
+  end
+
+  scenario "can not create a question without a language" do
+    fill_in "How do you say", with: 'Fuck you'
+    click_button 'Create Question'
+
+    expect(page).to have_content("Question has not been created.")
+    expect(page).to have_content("Language can't be blank")
   end
 
 end

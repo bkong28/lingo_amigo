@@ -1,9 +1,8 @@
 <%= link_to "New Question", new_question_path %>
 <h2>Questions</h2>
+<h3>How do you say...</h3>
 <ul>
   <% @questions.each do |question| %>
-    <li><%=link_to question.phrase, question%></li>
-		<li>How do you say "<%= question.phrase %>" in <%= question.language_id%>?%></li>
-
+		<li>"<%= link_to question.phrase, question %>" in <%= question.language.name unless question.language.nil? %>?%></li>
   <% end %>
 </ul>

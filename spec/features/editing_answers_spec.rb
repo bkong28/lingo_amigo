@@ -17,16 +17,12 @@ feature "Editing answers" do
     click_link "Edit Answer"
   end
   
-  scenario "Updating a answer" do
+  scenario "Updating an answer" do
     fill_in "Response", with: "Bonjour again"
     click_button "Update Answer"
     
-    expect(page).to have_content "Answer has been updated."
-    
-    within("#answer h2") do
-      expect(page).to have_content("Bonjour again")
-    end
-    
+    expect(page).to have_content("Answer has been updated.")
+    expect(page).to have_content("Bonjour again")
     expect(page).to_not have_content answer.response
   end
   
