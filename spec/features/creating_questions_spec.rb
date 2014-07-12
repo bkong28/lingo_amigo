@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature 'Creating Questions' do
   before do
-    sign_in_as!(FactoryGirl.create(:admin_user))
+    sign_in_as!(FactoryGirl.create(:user))
     visit '/'
     Language.create name:"Spanish"
     

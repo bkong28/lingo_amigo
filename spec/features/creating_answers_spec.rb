@@ -1,12 +1,6 @@
 require 'spec_helper'
 feature "Creating Answers" do
   before do
-# code that gets replaced on p185
-#    FactoryGirl.create(:question, phrase: "Hello") #, :language_id "1")
-#    
-#    visit '/'
-#    click_link "Hello"
-#    click_link "answer"
     question = FactoryGirl.create(:question)
     user = FactoryGirl.create(:user)
     
