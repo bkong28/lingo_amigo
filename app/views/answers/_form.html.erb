@@ -1,4 +1,4 @@
-<%= form_for [@question, @answer] do |f| %>
+<%= form_for [@question, @answer], multipart: true do |f| %>
   <% if @answer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@answer.errors.count, "error") %>prohibited this answer from being saved:</h2>
@@ -11,15 +11,12 @@
     </div>
   <% end %>
   
-  <p>
-    <%= f.label :response %><br>
-    <%= f.text_area :response %>
-  </p>
+  <input type="file" accept="audio/*;capture=microphone" name="answer[audio_capture]">
   <%= f.submit %>
 
 <!-- thanks to Matt Diamond for the audio capture code below -->
   <audio controls autoplay></audio>
-        <script type="text/javascript" src="recorder.js"> </script>
+        <%= javascript_include_tag "recorder.js" %>
                 <fieldset><legend>RECORD AUDIO</legend>
         <input onclick="startRecording()" type="button" value="start recording" />
         <input onclick="stopRecording()" type="button" value="stop recording and play" />
@@ -54,11 +51,29 @@
             }
 
             function stopRecording() {
-                recorder.stop();
-                recorder.exportWAV(function(s) {
+            recorder.stop();
+            recorder.exportWAV(function(s) {
+                audio.src = window.URL.createObjectURL(s);
+                sendWaveToPost(s);                  
+            });
+        }
 
-                                audio.src = window.URL.createObjectURL(s);
-                });
-            }
+            function sendWaveToPost(blob) {
+            alert('in');
+            var data = new FormData();
+
+            data.append("audio", blob, (new Date()).getTime() + ".wav");
+
+            var oReq = new XMLHttpRequest();
+            oReq.open("POST", "/answers/save_file");
+            oReq.send(data);
+            oReq.onload = function(oEvent) {
+                if (oReq.status == 200) {
+                    console.log("Uploaded");
+                } else {
+                    console.log("Error " + oReq.status + " occurred uploading your file.");
+                }
+            };
+        }
         </script>
 <% end %>

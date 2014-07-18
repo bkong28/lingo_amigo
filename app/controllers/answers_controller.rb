@@ -1,5 +1,6 @@
 class AnswersController < ApplicationController
-	before_action :set_question
+	protect_from_forgery :except => [:save_file]
+	before_action :set_question, :except => [:save_file]
 	before_action :set_answer, only: [:show, :edit, :update, :destroy]
 	before_action :require_signin!, except: [:show, :index]
 
@@ -37,6 +38,18 @@ class AnswersController < ApplicationController
 	 	@answer.destroy
 	  flash[:notice] = "Answer has been deleted."
 	  redirect_to @question
+	end
+
+	def save_file
+    audio = params[:audio]
+    save_path = Rails.root.join("public/#{audio.original_filename}")
+
+      # Open and write the file to file system.
+      File.open(save_path, 'wb') do |f|
+        f.write params[:audio].read
+      end
+
+    render :text=> 'hi'
 	end
 
 private

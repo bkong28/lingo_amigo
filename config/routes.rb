@@ -1,4 +1,5 @@
 LingoAmigo::Application.routes.draw do
+	post "/answers/save_file", to: "answers#save_file"
 
   root "questions#index"
   
