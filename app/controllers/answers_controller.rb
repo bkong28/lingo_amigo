@@ -49,12 +49,12 @@ class AnswersController < ApplicationController
         f.write params[:audio].read
       end
 
-    render :text=> 'hi'
+    render :text => audio.original_filename
 	end
 
 private
   def answer_params
-    params.require(:answer).permit(:response)
+    params.require(:answer).permit(:filename)
 	end
 
   def set_question

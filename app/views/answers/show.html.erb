@@ -7,3 +7,8 @@
   <%= simple_format(@answer.response) %>
 </div>
 
+
+<audio controls="controls" autoplay>
+  Your browser does not support the <code>audio</code> element.
+<source src="/<%= @answer.filename %>" type='audio/wav'>
+</audio>
