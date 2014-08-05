@@ -7,20 +7,20 @@ feature "Creating Answers" do
     visit '/'
     click_link question.phrase
     click_link "answer"
-    message = "You need to sign in or sign up before continuing."
+    message = "You need to log in or sign up before continuing."
     expect(page).to have_content(message)
     
-    fill_in "Name", with: user.name
-    fill_in "Password", with: user.password
-    click_button "Sign in"
+    fill_in "username", with: user.name
+    fill_in "password", with: user.password
+    click_button "Log in"
     
     click_link question.phrase
-    click_link "answer"
+    # click_link "answer"
   end
 
   scenario "Creating an answer" do
     # fill_in "Response", with: "Bonjour"
-    click_button "Create Answer"
+    click_button "Submit recording"
     
     expect(page).to have_content("Answer has been created.")
 

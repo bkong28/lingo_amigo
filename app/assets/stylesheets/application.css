@@ -29,13 +29,13 @@ ul {
 
 /* unvisited link */
 a:link {
-	color: #blue;
+	color: blue;
   text-decoration: none;
 }
 
 /* visited link */
 a:visited {
-  color: #purple;
+  color: purple;
   text-decoration: none;
 }
 

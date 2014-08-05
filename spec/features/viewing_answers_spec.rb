@@ -15,7 +15,8 @@ feature "Viewing answers" do
     
     FactoryGirl.create(:answer, question: goodbye, response: "Au revoir")
   
-    visit '/' 
+    visit '/'
+    
   end
 
   scenario "Viewing answers for a given question" do

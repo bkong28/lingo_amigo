@@ -5,11 +5,11 @@ class SessionsController < ApplicationController
 	  
 	  if user && user.authenticate(params[:signin][:password])
 	    session[:user_id] = user.id
-	    flash[:notice] = "Signed in successfully."
+	    flash[:notice] = "Logged in successfully."
 	    
 	    redirect_to root_url
 	  else
-	    flash[:error] = "Sorry."
+	    flash[:error] = "Please try again."
 	    render :new
 	  end
 	end

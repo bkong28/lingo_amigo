@@ -1,10 +1,10 @@
 module AuthenticationHelpers
   def sign_in_as!(user)
     visit '/signin'
-    fill_in "Name", with: user.name
-    fill_in "Password", with: user.password
-    click_button 'Sign in'
-    expect(page).to have_content("Signed in successfully.")
+    fill_in "username", with: user.name
+    fill_in "password", with: user.password
+    click_button 'Log in'
+    expect(page).to have_content("Logged in successfully.")
 	end
 end
 
