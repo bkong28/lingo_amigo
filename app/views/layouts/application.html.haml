@@ -33,17 +33,12 @@
             %li= link_to " | ", "#"
             %li
               %a{href: "mailto:bkong28@gmail.com"} Contact us
+    .text-center
+      = render partial: "shared/flash_messages", flash: flash
 
-
-
-    -#- flash.each do |key, value|
-    -#  .flash{id: key}
-    -#    = value
     %h1= link_to "lingo amigo", root_path
     = yield
-    -#- flash.each do |key, value|
-    -#  .flash{id: key}
-    -#    = value
+
     %br/
     %br/
 

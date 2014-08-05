@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     params[resource] &&= send(method) if respond_to?(method, true)
   end
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to :back, :alert => exception.message
+  end
+
   private
 
 end
