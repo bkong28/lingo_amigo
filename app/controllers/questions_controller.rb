@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
 	before_action :set_question, only: [:show, :edit, :update, :destroy]
 	before_action :collect_languages, only: [:new, :edit, :update]
 
-  before_action :authenticate_user!, except: [:new]
+  before_action :authenticate_user!, except: [:new, :create]
 
   load_and_authorize_resource
 	
@@ -15,19 +15,17 @@ class QuestionsController < ApplicationController
 		@question = Question.new
 		collect_languages
 		@questions = Question.all.includes(:language)
-
 	end
 
 	def create
   	@question = Question.new(question_params)
-  	  
+  	@questions = Question.all.includes(:language)
   	if @question.save
 	    flash[:notice] = "Question has been created."
 	    redirect_to @question
   	else
     	flash[:alert] = "Question has not been created."
     	collect_languages
-
     	render "new"
     end
 	end
@@ -73,14 +71,5 @@ class QuestionsController < ApplicationController
 	  	@languages = Language.all
 	  end
 
-
- #  def authorize_admin!
- #    require_signin!
-    
- #    unless current_user.admin?
- #      flash[:alert] = "You must be an admin to do that."
- #      redirect_to root_path
-	# 	end
-	# end
 end
 
