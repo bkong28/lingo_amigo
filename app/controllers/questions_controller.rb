@@ -1,8 +1,11 @@
 class QuestionsController < ApplicationController
 	
-	# before_action :authorize_admin!, except: [:index, :new, :create, :show]
 	before_action :set_question, only: [:show, :edit, :update, :destroy]
 	before_action :collect_languages, only: [:new, :edit, :update]
+
+  before_action :authenticate_user!, except: [:new]
+
+  load_and_authorize_resource
 	
 	def index
 		@questions = Question.all.includes(:language)

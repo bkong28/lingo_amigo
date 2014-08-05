@@ -2,7 +2,9 @@ class AnswersController < ApplicationController
 	protect_from_forgery :except => [:save_file]
 	before_action :set_question, :except => [:save_file]
 	before_action :set_answer, only: [:show, :edit, :update, :destroy]
-	before_action :require_signin!, except: [:show, :index]
+
+  before_action :authenticate_user!, except: [:show, :index]
+  load_and_authorize_resource
 
 	def new
 	  @answer = @question.answers.build

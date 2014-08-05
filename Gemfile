@@ -56,5 +56,5 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'haml'
 gem 'haml-rails'
 gem 'html2haml'
-
 gem 'devise'
+gem "cancan"

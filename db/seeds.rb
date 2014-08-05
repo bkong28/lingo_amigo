@@ -6,6 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+admin = User.create(:email => 'admin@lingoamigo.com', :password => 'scarlet321', :password_confirmation => 'scarlet321', :admin => true)
+admin.save
+
 # Language.create(name: 'Korean')
 
 ["Mandarin",

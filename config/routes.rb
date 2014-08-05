@@ -8,6 +8,5 @@ LingoAmigo::Application.routes.draw do
   	resources :answers
   end
 
-  get "/signin", to: "sessions#new"
-  post "/signin", to: "sessions#create"
+
 end
