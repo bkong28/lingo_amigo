@@ -12,14 +12,14 @@
 	<% end %>
 
   <p>
-    <%= f.label :phrase, "How do you say" %><br />
-    <%= f.text_field :phrase %>
+    <%= f.label :phrase, "How do you say", :hidden => true %><br />
+    <%= f.text_area :phrase, :placeholder => "How do you say..." %>
 	</p>
 
 	<p>
-    <%= f.label :language_id %><br>
-    <%= f.select :language_id, @languages.map { |l| [l.name, l.id] }, {:prompt => 'select language'} %>
+    <%= f.label :language_id, :hidden => true %><br>
+    <%= f.select :language_id, @languages.map { |l| [l.name, l.id] }.sort, {:prompt => 'in...'} %>
   </p> 
 
-  <%= f.submit %>
+  <%= f.submit "?" %>
 <% end %>

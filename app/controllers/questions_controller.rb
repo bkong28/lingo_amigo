@@ -11,6 +11,8 @@ class QuestionsController < ApplicationController
 	def new
 		@question = Question.new
 		collect_languages
+		@questions = Question.all.includes(:language)
+
 	end
 
 	def create
@@ -48,7 +50,7 @@ class QuestionsController < ApplicationController
 	def destroy
 	  @question.destroy
 	  flash[:notice] = "Question has been destroyed."
-	  redirect_to questions_path
+	  redirect_to root_path
 	end
 
 	private

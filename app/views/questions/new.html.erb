@@ -1,2 +1,16 @@
-<h2>New Question</h2>
 <%= render "form" %>
+<br>
+<br>
+<h2>Recent Activity</h2>
+
+<ul>
+  <% @questions.each do |question| %>
+		
+<!-- need to sort these links  -->
+		<li>
+			<%= link_to "#{question.language.name unless question.language.nil?} for '#{question.phrase.capitalize}'", question %>
+			<%= pluralize(question.answers.count, "answer") %>
+		</li>
+
+  <% end %>
+</ul>

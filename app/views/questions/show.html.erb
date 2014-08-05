@@ -1,23 +1,33 @@
 <% title(@question.phrase, "Questions")%>
 
-<h2>How do you say "<%= @question.phrase %>" in <%= @question.language.name unless @question.language.nil?%>?</h2>
+<h2><%= @question.language.name unless @question.language.nil?%> for "<%= @question.phrase.capitalize %>"</h2>
 
-<%= link_to "edit", edit_question_path(@question) %>
+<div>
+  <%= link_to "edit", edit_question_path(@question) %>
 
-<%= link_to "delete",
-     question_path(@question),
-     method: :delete,
-     data: { confirm:
-               "Are you sure you want to delete this question?"
-           } %>
+  <%= link_to "delete",
+  question_path(@question),
+  method: :delete,
+  data: { confirm:
+             "Are you sure you want to delete this question?"
+         } %>
+</div>
+<br>
+<br>
 
-<%= link_to "answer", new_question_answer_path(@question) %>
 
+<!-- add ability to vote answers up -->
 <ul id='answers'>
   <% @question.answers.each do |answer| %>
     <li>
-      #<%= answer.id %> -
-      <%= link_to answer.response, [@question, answer] %>
+      <audio controls="controls">
+        Your browser does not support the <code>audio</code> element.
+        <source src="/<%= answer.filename %>" type='audio/wav'>
+      </audio>
     </li>
   <% end %>
 </ul>
+
+<h3>
+  <%= link_to "Record an answer", new_question_answer_path(@question) %>
+</h3>

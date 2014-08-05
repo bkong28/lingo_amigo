@@ -14,7 +14,7 @@ class AnswersController < ApplicationController
 	  @answer.user = current_user
 	  if @answer.save
 	    flash[:notice] = "Answer has been created."
-	    redirect_to [@question, @answer]
+	    redirect_to [@question]
 	  else
 	    flash[:alert] = "Answer has not been created."
 	    render "new"
