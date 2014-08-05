@@ -1,0 +1,45 @@
+!!!
+%html
+  %head
+    %title
+      - if content_for?(:title)
+        = yield(:title)
+      - else
+        LingoAmigo
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body
+    %nav.navbar.navbar-inverse{role: "navigation"}
+      .container
+        .navbar-header
+          %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to root_path, class: 'navbar-brand' do
+            %span.logo
+              %strong Lingo
+              %span.handwriting Amigo
+
+        .collapse.navbar-collapse
+          %ul.nav.navbar-nav.navbar-right
+            %li= link_to "Log in", signin_path
+            %li= link_to " | ", "#"
+            %li= link_to "Sign up", new_user_path
+
+
+    #header
+      %a{href: "mailto:bkong28@gmail.com"} Contact us
+    -#- flash.each do |key, value|
+    -#  .flash{id: key}
+    -#    = value
+    %h1= link_to "lingo amigo", root_path
+    = yield
+    -#- flash.each do |key, value|
+    -#  .flash{id: key}
+    -#    = value
+    %br/
+    %br/
+    #footer
+      %a{href: "mailto:bkong28@gmail.com"} Leave feedback
