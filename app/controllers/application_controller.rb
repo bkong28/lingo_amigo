@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 	  def require_signin!
 	    if current_user.nil?
 	      flash[:error] =
-	      "You need to sign in or sign up before continuing."
+	      "You need to Log in or sign up before continuing."
 	      redirect_to signin_url
 			end
 		end
