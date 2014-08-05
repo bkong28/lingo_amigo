@@ -24,13 +24,15 @@
 
         .collapse.navbar-collapse
           %ul.nav.navbar-nav.navbar-right
-            %li= link_to "Log in", signin_path
+            %li= link_to "Log in", new_user_session_path
             %li= link_to " | ", "#"
-            %li= link_to "Sign up", new_user_path
+            %li= link_to "Sign up", new_user_registration_path
+            %li= link_to " | ", "#"
+            %li
+              %a{href: "mailto:bkong28@gmail.com"} Contact us
 
 
-    #header
-      %a{href: "mailto:bkong28@gmail.com"} Contact us
+
     -#- flash.each do |key, value|
     -#  .flash{id: key}
     -#    = value
@@ -41,5 +43,10 @@
     -#    = value
     %br/
     %br/
+
     #footer
-      %a{href: "mailto:bkong28@gmail.com"} Leave feedback
+      .container
+        %hr
+        %p.muted.credit
+          .text-success
+            %a{href: "mailto:bkong28@gmail.com"} Leave feedback

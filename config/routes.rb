@@ -1,4 +1,5 @@
 LingoAmigo::Application.routes.draw do
+  devise_for :users
 	post "/answers/save_file", to: "answers#save_file"
 
   root "questions#new"
@@ -6,8 +7,6 @@ LingoAmigo::Application.routes.draw do
   resources :questions do
   	resources :answers
   end
-  
-  resources :users
 
   get "/signin", to: "sessions#new"
   post "/signin", to: "sessions#create"

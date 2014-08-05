@@ -54,3 +54,7 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 # gem 'debugger', group: [:development, :test]
 
 gem 'haml'
+gem 'haml-rails'
+gem 'html2haml'
+
+gem 'devise'
