@@ -66,7 +66,7 @@
         oReq.onload = function(oEvent) {
           if (oReq.status == 200) {
             $('#filename').val(oReq.response)
-            $('input[type=submit]').prop('disabled', '')
+            
             console.log("Uploaded");
           } else {
             console.log("Error " + oReq.status + " occurred uploading your file.");
