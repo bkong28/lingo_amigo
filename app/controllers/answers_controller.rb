@@ -3,7 +3,7 @@ class AnswersController < ApplicationController
 	before_action :set_question, :except => [:save_file]
 	before_action :set_answer, only: [:show, :edit, :update, :destroy]
 
-  before_action :authenticate_user!, except: [:show, :index, :save_file]
+  before_action :authenticate_user!, except: [:show, :index]
   load_and_authorize_resource
 
 	def new
@@ -44,8 +44,10 @@ class AnswersController < ApplicationController
 	end
 
 	def save_file	
-	  @@aud= params[:audio]
-	  render text: params[:audio]  
+	  
+	  audio = params[:audio]
+	  @@aud= audio
+	  render text: audio
 	end
 
   private
