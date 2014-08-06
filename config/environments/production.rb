@@ -77,4 +77,8 @@ LingoAmigo::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+  
+  ENV["AWS_ACCESS_KEY_ID"] = "AKIAIZADNQSNACCXQNAA"
+  ENV["AWS_SECRET_ACCESS_KEY"] = "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"
+  ENV["AWS_S3_BUCKET"] ="lingoamigo"
 end

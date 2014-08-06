@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140805210347) do
+ActiveRecord::Schema.define(version: 20140806142257) do
 
   create_table "answers", force: true do |t|
     t.string   "title"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20140805210347) do
     t.datetime "updated_at"
     t.string   "filename"
     t.integer  "user_id"
+    t.string   "audio"
   end
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
@@ -37,6 +38,7 @@ ActiveRecord::Schema.define(version: 20140805210347) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "language_id"
+    t.string   "audio"
   end
 
   create_table "users", force: true do |t|

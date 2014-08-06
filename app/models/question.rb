@@ -6,4 +6,6 @@ class Question < ActiveRecord::Base
 	belongs_to :language
 	# delegate method provides ability to stop the Law of Dementer
 	# delegate :name, to: :language, prefix: true
+	mount_uploader :audio, AudioUploader
+	
 end

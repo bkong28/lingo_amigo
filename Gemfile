@@ -64,3 +64,6 @@ gem 'haml-rails'
 gem 'html2haml'
 gem 'devise'
 gem "cancan"
+gem 'carrierwave'
+gem 'fog'
+

@@ -11,9 +11,10 @@ class AnswersController < ApplicationController
 	  @languages = Language.all
 	end
 
-	def create
+	def create	
 	  @answer = @question.answers.build(answer_params)
 	  @answer.user = current_user
+	  @answer.audio = @@aud
 	  if @answer.save
 	    flash[:notice] = "Answer has been created."
 	    redirect_to [@question]
@@ -42,29 +43,22 @@ class AnswersController < ApplicationController
 	  redirect_to @question
 	end
 
-	def save_file
-    audio = params[:audio]
-    save_path = Rails.root.join("public/#{audio.original_filename}")
-
-      # Open and write the file to file system.
-      File.open(save_path, 'wb') do |f|
-        f.write params[:audio].read
-      end
-
-    render :text => audio.original_filename
+	def save_file	
+	  @@aud= params[:audio]
+	  render text: params[:audio]  
 	end
 
-private
-  def answer_params
-    params.require(:answer).permit(:filename)
-	end
-
-  def set_question
-    @question = Question.find(params[:question_id])
-  end
-
-  def set_answer
-  	@answer = @question.answers.find(params[:id])
-	end
+  private
+    def answer_params
+      params.require(:answer).permit(:filename, :audio)
+  	end
+  
+    def set_question
+      @question = Question.find(params[:question_id])
+    end
+  
+    def set_answer
+    	@answer = @question.answers.find(params[:id]) 
+  	end
 
 end
