@@ -58,18 +58,11 @@
         alert('in');
         var data = new FormData();
     
-        data.append("audio", blob, (new Date()).getTime() + ".wav");      
-        
-        $.ajax({
-            type: 'POST',
-            url: '/answers/save_file',
-            data: data,
-            processData: false,
-            contentType: false
-        }).done(function(data) {
-               console.log(data);
-        });
-        
+        data.append("audio", blob, (new Date()).getTime() + ".wav");
+      
+        var oReq = new XMLHttpRequest();
+        oReq.open("POST", "/answers/save_file");
+        oReq.send(data);
         
       }
   %input#filename{name: "answer[filename]", type: "hidden"}
