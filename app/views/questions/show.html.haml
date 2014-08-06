@@ -1,0 +1,21 @@
+- title(@question.phrase, "Questions")
+%h2
+  = @question.language.name unless @question.language.nil?
+  for "#{@question.phrase.capitalize}"
+%div
+  = link_to "edit", edit_question_path(@question)
+  - if can? :destroy, Answer
+    = link_to "delete",question_path(@question), method: :delete, data: { confirm: "Are you sure you want to delete this question?"}                                                    
+%br/
+%br/
+/ add ability to vote answers up
+%ul#answers
+  - @question.answers.each do |answer|
+    %li
+      %audio{controls: "controls"}
+        Your browser does not support the
+        %code audio
+        element.
+        %source{src: answer.audio_url, type: "audio/wav"}
+%h3
+  = link_to "Record an answer", new_question_answer_path(@question)

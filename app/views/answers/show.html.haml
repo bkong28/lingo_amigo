@@ -1,0 +1,13 @@
+%h2
+  "#{@answer.question.phrase.capitalize}" in #{@answer.question.language.name}...
+/ <span id='author'>Answered by <haml_loud> @answer.user.email </haml_loud></span>
+%audio{autoplay: "", controls: "controls"}
+  Your browser does not support the
+  %code audio
+  element.
+  %source{src: "/#{@answer.filename}", type: "audio/wav"}
+%ul
+  %li= link_to "Edit Answer", [:edit, @question, @answer]
+  %li
+  	- if can? :destroy, Question
+  	  = link_to "Delete Answer", [@question, @answer], method: :delete, data: { confirm: "Are you sure you want to delete this answer?"}  

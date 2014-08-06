@@ -17,4 +17,5 @@
 
 .idea
 /public/*.wav
+/public/uploads
 .project
