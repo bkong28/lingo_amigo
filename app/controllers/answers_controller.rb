@@ -3,7 +3,7 @@ class AnswersController < ApplicationController
 	before_action :set_question, :except => [:save_file]
 	before_action :set_answer, only: [:show, :edit, :update, :destroy]
 
-  before_action :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_user!, except: [:show, :index, :save_file]
   load_and_authorize_resource
 
 	def new
