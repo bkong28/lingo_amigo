@@ -43,8 +43,7 @@ class AnswersController < ApplicationController
 	  redirect_to @question
 	end
 
-	def save_file	
-	  
+	def save_file		  
 	  audio = params[:audio]
 	  @@aud= audio
 	  render text: audio
