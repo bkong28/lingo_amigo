@@ -58,21 +58,20 @@
         alert('in');
         var data = new FormData();
     
-        data.append("audio", blob, (new Date()).getTime() + ".wav");        
+        data.append("audio", blob, (new Date()).getTime() + ".wav");
         
-        $.ajax({
-          url :  "/answers/save_file",
-          type: 'POST',
-          data: data,
-          contentType: false,
-          processData: false,
-          success: function(data) {
-           console.log("boa!");
-          },    
-          error: function() {
-            console.log("not so boa!");
+        var oReq = new XMLHttpRequest();
+        oReq.open("POST", "/answers/save_file");
+        oReq.send(data);
+        oReq.onload = function(oEvent) {
+          if (oReq.status == 200) {
+            $('#filename').val(oReq.response)
+            
+            console.log("Uploaded");
+          } else {
+            console.log("Error " + oReq.status + " occurred uploading your file.");
           }
-        });
+        };
       }
   %input#filename{name: "answer[filename]", type: "hidden"}
   %br
