@@ -31,16 +31,13 @@
               %li= link_to "Log in", new_user_session_path
               %li= link_to "Sign up", new_user_registration_path
             %li
-              %a{href: "#"} About
+              = link_to 'About', page_path('about')
             %li
               %a{href: "mailto:bkong28@gmail.com"} Contact us
             
     .text-center
       = render partial: "shared/flash_messages", flash: flash
-
-    %h1= link_to "lingo amigo", root_path
     = yield
-
     %br/
     %br/
 

@@ -66,4 +66,5 @@ gem 'devise'
 gem "cancan"
 gem 'carrierwave'
 gem 'fog'
+gem 'high_voltage'
 

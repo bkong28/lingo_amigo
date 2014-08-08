@@ -29,16 +29,16 @@ ul {
 }
 
 /* unvisited link */
-a:link {
-	color: blue;
-  text-decoration: none;
-}
+/*a:link {*/
+	/*color: blue;*/
+  /*text-decoration: none;*/
+/*}*/
 
 /* visited link */
-a:visited {
-  color: purple;
-  text-decoration: none;
-}
+/*a:visited {*/
+  /*color: purple;*/
+  /*text-decoration: none;*/
+/*}*/
 
 /* mouse over link */
 a:hover {
