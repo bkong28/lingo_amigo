@@ -7,5 +7,20 @@ class Question < ActiveRecord::Base
 	# delegate method provides ability to stop the Law of Dementer
 	# delegate :name, to: :language, prefix: true
 	mount_uploader :audio, AudioUploader
+
+  def equal_to phrase_string
+    remove_marks(phrase) == remove_marks(phrase_string)
+  end
+
+  def remove_marks phrase
+    phrase.downcase.gsub(/[^a-z ]/, '').gsub(/ /, '')
+  end
+
+  def find_equal_text
+    Question.all.each do |q|
+      return q if equal_to q.phrase
+    end
+    return false
+  end
 	
 end

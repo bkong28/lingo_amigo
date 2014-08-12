@@ -20,14 +20,22 @@ class QuestionsController < ApplicationController
 	def create
   	@question = Question.new(question_params)
   	@questions = Question.all.includes(:language)
-  	if @question.save
-	    flash[:notice] = "Question has been created."
-	    redirect_to @question
-  	else
-    	flash[:alert] = "Question has not been created."
-    	collect_languages
-    	render "new"
+    eq = @question.find_equal_text
+    if eq
+      flash[:notice] = "This is a repeated question."
+      redirect_to eq
+    else
+      if @question.save
+        flash[:notice] = "Question has been created."
+        redirect_to @question
+      else
+        flash[:alert] = "Question has not been created."
+        collect_languages
+        render "new"
+      end
     end
+
+
 	end
 
 	def show
