@@ -14,7 +14,8 @@ class QuestionsController < ApplicationController
 	def new
 		@question = Question.new
 		collect_languages
-		@questions = Question.all.includes(:language)
+		@questions = Question.joins(:language).order('languages.name')
+
 	end
 
 	def create
