@@ -1,6 +1,8 @@
 LingoAmigo::Application.routes.draw do
-  devise_for :users
-	post "/answers/save_file", to: "answers#save_file"
+  devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
+  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
+
+  post "/answers/save_file", to: "answers#save_file"
 
   root "questions#new"
   
@@ -12,6 +14,7 @@ LingoAmigo::Application.routes.draw do
       end
     end
   end
+
 
 
 end

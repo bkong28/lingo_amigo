@@ -56,6 +56,9 @@ gem 'carrierwave'
 gem 'fog'
 gem 'high_voltage'
 gem 'acts_as_votable', '~> 0.10.0'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.2'
