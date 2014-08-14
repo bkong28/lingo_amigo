@@ -57,6 +57,7 @@ gem 'fog'
 gem 'high_voltage'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'omniauth'
+gem 'omniauth-oauth2'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 
