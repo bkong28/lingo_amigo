@@ -18,7 +18,7 @@ class Question < ActiveRecord::Base
 
   def find_equal_text
     Question.all.each do |q|
-      return q if equal_to q.phrase
+      return q if equal_to q.phrase and (self.language.name == q.language.name)
     end
     return false
   end

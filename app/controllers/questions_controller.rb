@@ -22,7 +22,7 @@ class QuestionsController < ApplicationController
   	@questions = Question.all.includes(:language)
     eq = @question.find_equal_text
     if eq
-      flash[:notice] = "This is a repeated question."
+      #flash[:notice] = "This is a repeated question."
       redirect_to eq
     else
       if @question.save
