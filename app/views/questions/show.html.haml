@@ -21,6 +21,9 @@
                 %code audio
                 element.
                 %source{src: answer.audio_url, type: "audio/wav"}
+            %td
+              = link_to "(#{answer.get_likes.size}) Upvote", like_question_answer_path(@question,answer), method: :put
+              = link_to "Downvote (#{answer.get_dislikes.size}) ", dislike_question_answer_path(@question, answer), method: :put
             -if can? :destroy, Answer
               %td
                 = link_to "Delete",question_answer_path(@question,answer), class: 'btn btn-danger', method: :delete, data: { confirm: "Are you sure you want to delete this answer?"}

@@ -47,6 +47,16 @@ group :test do
   gem 'factory_girl_rails', '~> 4.2.1'
 end
 
+gem 'haml'
+gem 'haml-rails'
+gem 'html2haml'
+gem 'devise'
+gem "cancan"
+gem 'carrierwave'
+gem 'fog'
+gem 'high_voltage'
+gem 'acts_as_votable', '~> 0.10.0'
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.2'
 
@@ -58,13 +68,4 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
-gem 'haml'
-gem 'haml-rails'
-gem 'html2haml'
-gem 'devise'
-gem "cancan"
-gem 'carrierwave'
-gem 'fog'
-gem 'high_voltage'
 

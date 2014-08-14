@@ -1,7 +1,7 @@
 class AnswersController < ApplicationController
 	protect_from_forgery :except => [:save_file]
 	before_action :set_question, :except => [:save_file]
-	before_action :set_answer, only: [:show, :edit, :update, :destroy]
+	before_action :set_answer, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 
   before_action :authenticate_user!, except: [:show, :index]
   load_and_authorize_resource
@@ -47,7 +47,18 @@ class AnswersController < ApplicationController
 	  audio = params[:audio]
 	  @@aud= audio
 	  render text: audio
-	end
+  end
+
+  def upvote
+    @answer.liked_by current_user
+    redirect_to @question
+  end
+
+  def downvote
+    @answer.downvote_from current_user
+    redirect_to @question
+  end
+
 
   private
     def answer_params

@@ -5,7 +5,12 @@ LingoAmigo::Application.routes.draw do
   root "questions#new"
   
   resources :questions do
-  	resources :answers
+  	resources :answers do
+      member do
+        put "like", to: "answers#upvote"
+        put "dislike", to: "answers#downvote"
+      end
+    end
   end
 
 
