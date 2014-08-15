@@ -8,6 +8,9 @@ class Ability
     else
       can :manage, :all
       cannot :destroy, [Question, Answer]
+      cannot :edit, [Question]
+      cannot :update, [Question]
+
     end
 
   end

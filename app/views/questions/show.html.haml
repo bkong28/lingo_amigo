@@ -3,7 +3,8 @@
   = @question.language.name unless @question.language.nil?
   for "#{@question.phrase.capitalize}"
 %div
-  = link_to "edit", edit_question_path(@question), class: 'btn btn-primary'
+  - if can? :edit, Question
+    = link_to "edit", edit_question_path(@question), class: 'btn btn-primary'
   - if can? :destroy, Question
     = link_to "delete", question_path(@question), class: 'btn btn-danger', method: :delete, data: { confirm: "Are you sure you want to delete this question?"}
 %br
