@@ -40,6 +40,7 @@ class QuestionsController < ApplicationController
 	end
 
 	def show
+    @more_questions = Question.where('id != ? and language_id = ?', @question.id, @question.language.id).order("created_at DESC").limit(5)
 	end
 
 	def edit

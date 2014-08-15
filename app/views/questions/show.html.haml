@@ -33,3 +33,14 @@
 
 %h3
   = link_to "Record an answer", new_question_answer_path(@question), class: 'btn btn-success'
+%br
+%br
+.row
+  .col-lg-2
+  .col-lg-8
+    %h4= "More #{@question.language.name} Q&A"
+    - @more_questions.each do |q|
+      = link_to "#{q.language.name unless q.language.nil?} for '#{q.phrase.capitalize}'", q
+      = pluralize(q.answers.count, "answer")
+
+  .col-lg-2
