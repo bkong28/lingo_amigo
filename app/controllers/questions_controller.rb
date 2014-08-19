@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
 	before_action :set_question, only: [:show, :edit, :update, :destroy]
 	before_action :collect_languages, only: [:new, :edit, :update]
 
-  before_action :authenticate_user!, except: [:new, :show, :create]
+  before_action :authenticate_user!, except: [:new, :show]
 
   load_and_authorize_resource
 	
@@ -21,6 +21,7 @@ class QuestionsController < ApplicationController
 	def create
   	@question = Question.new(question_params)
   	@questions = Question.all.includes(:language)
+    @question.user = current_user
     eq = @question.find_equal_text
     if eq
       #flash[:notice] = "This is a repeated question."

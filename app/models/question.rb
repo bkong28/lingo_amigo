@@ -4,6 +4,7 @@ class Question < ActiveRecord::Base
 	has_many :answers, dependent: :delete_all
 	# defines a language method on questions - both getter & setter methods
 	belongs_to :language
+  belongs_to :user
 	# delegate method provides ability to stop the Law of Dementer
 	# delegate :name, to: :language, prefix: true
 	mount_uploader :audio, AudioUploader

@@ -22,12 +22,16 @@
                 %code audio
                 element.
                 %source{src: answer.audio_url, type: "audio/wav"}
-            %td
+              %br
               - days = (Time.now - answer.created_at).to_i / 1.day
               - if days > 0
-                = "By #{answer.user.email} #{days} days ago"
+                %p
+                  %small
+                    = "By #{answer.user.email} #{days} days ago"
               - else
-                = "By #{answer.user.email} #{((Time.now - answer.created_at) / 1.hour).round} hours ago"
+                %p
+                  %small
+                    = "By #{answer.user.email} #{((Time.now - answer.created_at) / 1.hour).round} hours ago"
             %td
               .updown
                 = link_to "(#{answer.get_likes.size}) Upvote", like_question_answer_path(@question,answer), method: :put

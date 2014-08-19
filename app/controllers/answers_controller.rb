@@ -16,6 +16,7 @@ class AnswersController < ApplicationController
 	  @answer.user = current_user
 	  @answer.audio = @@aud
 	  if @answer.save
+      QuestionMailer.new_answer(@answer).deliver
 	    flash[:notice] = "Answer has been created."
 	    redirect_to [@question]
 	  else
