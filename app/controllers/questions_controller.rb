@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
 	before_action :set_question, only: [:show, :edit, :update, :destroy]
 	before_action :collect_languages, only: [:new, :edit, :update]
 
-  before_action :authenticate_user!, except: [:new, :create]
+  before_action :authenticate_user!, except: [:new, :show, :create]
 
   load_and_authorize_resource
 	
